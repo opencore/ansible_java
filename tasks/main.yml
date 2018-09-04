@@ -1,0 +1,24 @@
+---
+# TODO: Only download if Java is not already installed
+- name: Ensure Java is downloaded
+  get_url:
+    dest: "{{ java_archive }}"
+    validate_certs: no
+    headers: "Cookie:oraclelicense=accept-securebackup-cookie"
+    url: "{{ download_url }}"
+  retries: 25
+  delay: 15
+  ignore_errors: true
+
+- name: Retry because the stupid thing fails occasionally
+  get_url:
+    dest: "{{ java_archive }}"
+    validate_certs: no
+    headers: "Cookie:oraclelicense=accept-securebackup-cookie"
+    url: "{{ download_url }}"
+  retries: 25
+  delay: 15
+
+- name: Ensure Java is installed
+  yum:
+    name: "{{ java_archive }}"

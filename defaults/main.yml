@@ -1,0 +1,6 @@
+---
+download_url: http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/{{ download_name }}
+download_folder: /tmp
+download_name: jdk-8u131-linux-x64.rpm
+java_archive: "{{ download_folder }}/{{ download_name }}"
+
